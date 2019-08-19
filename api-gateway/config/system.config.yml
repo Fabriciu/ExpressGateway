@@ -13,6 +13,9 @@ crypto:
   algorithm: aes256
   saltRounds: 10
 
+cli:
+  url: http://localhost:9876
+
 # OAuth2 Settings
 session:
   secret: keyboard cat

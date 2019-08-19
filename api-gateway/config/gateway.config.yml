@@ -2,7 +2,7 @@ http:
   port: 8080
 admin:
   port: 9876
-  host: localhost
+  hostname: localhost
 apiEndpoints:
   swagger:
     host: localhost
@@ -13,9 +13,13 @@ apiEndpoints:
   tweets:
     host: localhost
     paths: '/tweets/count'
+  adminAPI:
+    host: localhost
 serviceEndpoints:
   twitterData:
-    url: 'http://localhost:8001/v1'
+    url: 'http://springbootapp:8001/v1'
+  adminBackend:
+    url: 'http://localhost:9876' # this is EG admin API
 
 policies:
   - basic-auth
@@ -40,3 +44,6 @@ pipelines:
           - action:
               serviceEndpoint: twitterData 
               changeOrigin: true
+      - proxy:
+          - action:
+              serviceEndpoint: adminBackend
