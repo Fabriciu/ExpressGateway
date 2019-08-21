@@ -1,0 +1,16 @@
+FROM loyaltyone/docker-alpine-java-node
+
+WORKDIR /apigateway
+RUN mkdir /app
+
+COPY /apigateway/package.json /apigateway/app/package.json
+WORKDIR /apigateway/app
+RUN npm install
+
+ADD apigateway /apigateway/app/
+
+RUN mkdir /appl
+
+EXPOSE 8080 9876
+
+CMD npm start
